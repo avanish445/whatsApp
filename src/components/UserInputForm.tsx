@@ -1,15 +1,29 @@
 import React from 'react'
+import { formDataToJson } from '../utils/utilityFunctions'
+import { UserAuth } from '../context/UserContext'
 
 const UserInputForm: React.FC = () => {
+  const { login } = UserAuth()
+  const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const userInputs = formDataToJson(form)
+    login(userInputs)
+    console.log('JSON Data:', userInputs)
+  }
   return (
     <div className='w-full p-8 md:w-1/2 flex flex-col justify-center'>
       <h2 className='text-2xl font-bold mb-6 text-center'>Login</h2>
-      <form className='space-y-8 text-lg'>
+      <form className='space-y-8 text-lg' onSubmit={handleLoginSubmit}>
         {/* Email */}
         <div>
-          <label className='block mb-1 text-start text-gray-600'>Email Address</label>
+          <label htmlFor='email' className='block mb-1 text-start text-gray-600'>
+            Email Address
+          </label>
           <input
             required
+            id='email'
+            name='email'
             type='email'
             placeholder='Enter your email'
             className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
@@ -17,9 +31,13 @@ const UserInputForm: React.FC = () => {
         </div>
         {/* Password */}
         <div>
-          <label className='block mb-1 text-start text-gray-600'>Password</label>
+          <label htmlFor='password' className='block mb-1 text-start text-gray-600'>
+            Password
+          </label>
           <input
             required
+            id='password'
+            name='password'
             type='password'
             placeholder='Enter your password'
             className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'

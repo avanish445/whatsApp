@@ -10,7 +10,12 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from '../../../images/svg-icons/Svgs'
+import { useSelector } from 'react-redux'
+import { User, UserState } from '../../../redux/login/type'
+import { AppState } from '../../../redux/RootRedudcer'
 const ContactInfo: React.FC = () => {
+  // const user = useSelector((state: AppState): UserState => state.user)
+  // console.log('user', user)
   return (
     <div className='w-1/4 bg-white border-l border-gray-200 hidden lg:block'>
       {/* Contact header */}
@@ -87,3 +92,6 @@ const ContactInfo: React.FC = () => {
 }
 
 export default ContactInfo
+function state(state: unknown): unknown {
+  throw new Error('Function not implemented.')
+}
