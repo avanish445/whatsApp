@@ -33,11 +33,8 @@ export const fetchUser = () => {
     dispatch(fetchUserRequest())
     try {
       const response: User = {
-        id: 1,
-        name: 'Avanish',
-        email: 'avanish.p@kftpl.com',
-        password: 'avanish@123',
-        image: 'image',
+        _id: '1',
+        username: 'Avanish',
       }
       dispatch(fetchUserSuccessRequest(response))
     } catch (err) {
@@ -50,15 +47,8 @@ export const userLogin = (user: User) => {
   return (dispatch: Dispatch<UserActionType>) => {
     dispatch(fetchUserRequest())
     try {
-      const response: User = {
-        id: 1,
-        name: 'Avanish',
-        email: 'avanish.p@kftpl.com',
-        password: 'avanish@123',
-        image: 'image',
-      }
-      console.log('rsponse', user)
-      dispatch(login(response))
+      console.log('response', user)
+      dispatch(login(user))
     } catch (err) {
       console.log('error', err)
       dispatch(fetchUserFailedRequest('Failed'))

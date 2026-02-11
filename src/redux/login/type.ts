@@ -1,9 +1,7 @@
 export interface User {
-  id: number
-  name: string
-  email: string
-  password: string
-  image?: string
+  _id: string
+  username: string
+  token?: string
 }
 
 export interface UserState {
